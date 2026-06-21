@@ -19,7 +19,7 @@ spec:
           image: ghcr.io/alextoday111/quickticket-gateway:b8e5b91209a0ae5d6235380f60776cee81a33022
           imagePullPolicy: Always
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
           env:
             - name: DB_HOST
               value: "postgres"
@@ -38,14 +38,14 @@ spec:
           livenessProbe:
             httpGet:
               path: /health
-              port: 8081
+              port: 8080
             initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
-              port: 8081
+              port: 8080
             periodSeconds: 5
             failureThreshold: 2
           resources:
@@ -67,4 +67,4 @@ spec:
     app: events
   ports:
     - port: 8081
-      targetPort: 8081
+      targetPort: 8080
