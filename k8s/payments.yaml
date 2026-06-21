@@ -19,7 +19,7 @@ spec:
           image: ghcr.io/alextoday111/quickticket-gateway:b8e5b91209a0ae5d6235380f60776cee81a33022
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 8082
           env:
             - name: PAYMENT_FAILURE_RATE
               value: "0.0"
@@ -28,14 +28,14 @@ spec:
           livenessProbe:
             httpGet:
               path: /health
-              port: 8080
+              port: 8082
             initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /health
-              port: 8080
+              port: 8082
             periodSeconds: 5
             failureThreshold: 2
           resources:
@@ -57,4 +57,4 @@ spec:
     app: payments
   ports:
     - port: 8082
-      targetPort: 8080
+      targetPort: 8082
