@@ -53,3 +53,4 @@ jobs:
           git add -f k8s/
           git diff --cached --quiet || git commit -m "ci: update image tags to ${{ github.sha }}"
           git push
+
